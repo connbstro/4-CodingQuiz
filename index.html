@@ -1,14 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Coding Quiz</title>
-</head>
-<body>
-    
+  </head>
+  <body>
+    <!-- Page Header -->
+    <header>
+      <h1>Coding Quiz Challenge</h1>
+    </header>
+
+    <!-- Section for highscore page -->
+    <section class="highScore">
+      <h2 id="highScoreLink">View High Scores</h2>
+      <h2 id="timer"></h2>
+    </section>
+
+    <!-- Introduction page -->
+    <section class="sect" id="intro">
+      <h2>Coding Quiz Challenge</h2>
+      <p>
+        You will have 60 seconds to answer up to 5 quesitons, <br />If you
+        answer a question wrong then 10 seconds will be taken from timer.
+        <br /><br />Click "Start Quiz" to begin.
+      </p>
+      <button id="start">Start Quiz</button>
+    </section>
+
+    <!-- Questions page -->
+    <section class="sect" id="questionSelect">
+      <h3 id="question"></h3>
+      <p class="option" id="A" onclick="validateAnswer('A')"></p>
+      <p class="option" id="B" onclick="validateAnswer('B')"></p>
+      <p class="option" id="C" onclick="validateAnswer('C')"></p>
+      <p class="option" id="D" onclick="validateAnswer('D')"></p>
+    </section>
+
+    <!-- Game over page -->
+    <section class="sect" id="gameOver">
+      <h2>Game Over!</h2>
+      <p id="score"></p>
+      <label for="initials">Enter initals</label>
+      <input type="text" name="initials" id="initials" />
+      <button id="submitScore">Submit</button>
+    </section>
+
+    <!-- Populates player's initials and score -->
+    <section class="divs" id="highScoresPage">
+      <h2>High Scores</h2>
+      <div id="highScores"></div>
+      <button id="main">Main Page</button>
+      <button id="clear">Clear High Scores</button>
+    </section>
+
+    <!-- JavaScript file -->
     <script src="assets/js/script.js"></script>
-</body>
+  </body>
 </html>
