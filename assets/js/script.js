@@ -55,3 +55,47 @@ const questions = [
     answer: "C",
   },
 ];
+
+// Variables
+const lastQuestion = questions.length - 1;
+let currentQuestion = 0;
+let secondsLeft = 60;
+let score = 0;
+let interval;
+
+// Hide section
+function hide(y) {
+  y.style.display = "none";
+}
+
+// Show section
+function show(z) {
+  z.style.display = "block";
+}
+
+// Function to start quiz
+startBtn.addEventListener("click", function () {
+  hide(introSect);
+  show(questionSelect);
+  countdown();
+  timer.textContent = "Timer: " + secondsLeft + " second(s)";
+});
+
+// Countdown function
+function countdown() {
+  show(timer);
+  interval = setInterval(function () {
+    secondsLeft--;
+    timer.textContent = "Timer: " + secondsLeft + " second(s)";
+    if (secondsLeft <= 0) {
+      stopTimer();
+      finalizeQuiz();
+    }
+  }, 1000);
+}
+
+// Stop timer function
+function stopTimer() {
+  clearInterval(interval);
+  hide(timer);
+}
