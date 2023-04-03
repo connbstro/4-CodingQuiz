@@ -148,9 +148,7 @@ function finishQuiz() {
 function renderHighScores() {
   //Gets scores array from local storage
   const allScores = JSON.parse(localStorage.getItem("scores")) || [];
-  //Sorts players from higher to lower score
   allScores.sort((a, b) => b.score - a.score);
-  //Creates p elements for each user/score
   for (let i = 0; i < allScores.length; i++) {
     const savedScores = document.createElement("p");
     savedScores.textContent =
@@ -165,13 +163,12 @@ function renderHighScores() {
   }
 }
 
-//Function to save user's initials and score in local storage
+// Function to save user's initials and score in local storage
 submitBtn.addEventListener("click", function () {
   let initials = document.querySelector("#initials").value;
   if (initials === "") {
     alert("Enter your initials");
-  }
-  else {
+  } else {
     hide(highScoreLink);
     hide(rate);
     hide(gameOver);
@@ -181,22 +178,56 @@ submitBtn.addEventListener("click", function () {
       score,
     };
 
-    //Gets scores array from local storage
+    // Gets scores array from local storage
     const allScores = JSON.parse(localStorage.getItem("scores")) || [];
-    //Pushes newPlayer's onjects in an array
+    // Pushes newPlayer's onjects in an array
     allScores.push(newPlayer);
-    //Saves pushed initials and scores into local storage
+    // Saves pushed initials and scores into local storage
     localStorage.setItem("scores", JSON.stringify(allScores));
     renderHighScores();
   }
 });
 
-//Function to go back to main page when 'Main Page' button is clicked
-goToMainBtn.addEventListener("click", function () {
+// Function to show high scores
+highScoreLink.addEventListener("click", function () {
+  show(highScorePage);
+  hide(introSect);
+  hide(highScoreLink);
+  hide(questionSelect);
+  hide(gameOver);
+  hide(rate);
+  hide(timer);
+  stopTimer();
+  renderHighScores();
+});
+
+// Function to go back to main page
+mainBtn.addEventListener("click", function () {
   reset();
   show(introSect);
   show(highScoreLink);
   hide(highScorePage);
-  //Clears previous entered initial from initial's text box
   initials.value = "";
 });
+
+// Function to clear high scores
+clearBtn.addEventListener("click", function () {
+  removeChild();
+  localStorage.removeItem("scores");
+});
+
+//Function to reset variables for a new game
+function reset() {
+  score = 0;
+  currentQuestion = 0;
+  secondsLeft = 60;
+  removeChild();
+}
+
+// Remove child function
+function removeChild() {
+  const parent = document.querySelector("#highScores");
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
+}

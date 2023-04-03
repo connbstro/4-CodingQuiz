@@ -1,0 +1,21 @@
+/* Variables for colors that are being reused; easier to change all at once if needed */
+:root {
+    --main-color: blueviolet;
+    --hover-color: rgb(224, 11, 189);
+}
+/* Style for entire HTML page */
+* {
+    box-sizing: border-box;
+    font-size: 20px;
+}
+
+#intro, #highScoreLink {
+    display: block;
+}
+
+.sect {
+    /* Sets elements to not show on page by default */
+    display: none;
+    margin: auto;
+    max-width: 600px;
+}
