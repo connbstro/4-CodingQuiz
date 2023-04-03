@@ -77,6 +77,7 @@ function show(z) {
 startBtn.addEventListener("click", function () {
   hide(introSect);
   show(questionSelect);
+  getQuestions();
   countdown();
   timer.textContent = "Timer: " + secondsLeft + " second(s)";
 });
@@ -126,8 +127,8 @@ function validateAnswer(x) {
     rate.textContent = "Incorrect";
   }
   if (currentQuestion < lastQuestion) {
-    currentQuestion ++;
-    getQuestions()
+    currentQuestion++;
+    getQuestions();
   } else {
     stopTimer();
     finishQuiz();
@@ -142,3 +143,60 @@ function finishQuiz() {
   const showScore = document.querySelector("#score");
   showScore.textContent = "Your final score is " + score + ".";
 }
+
+//Function to render high scores
+function renderHighScores() {
+  //Gets scores array from local storage
+  const allScores = JSON.parse(localStorage.getItem("scores")) || [];
+  //Sorts players from higher to lower score
+  allScores.sort((a, b) => b.score - a.score);
+  //Creates p elements for each user/score
+  for (let i = 0; i < allScores.length; i++) {
+    const savedScores = document.createElement("p");
+    savedScores.textContent =
+      i +
+      1 +
+      ". " +
+      allScores[i].user +
+      " - " +
+      allScores[i].score +
+      " point(s)";
+    highScores.appendChild(savedScores);
+  }
+}
+
+//Function to save user's initials and score in local storage
+submitBtn.addEventListener("click", function () {
+  let initials = document.querySelector("#initials").value;
+  if (initials === "") {
+    alert("Enter your initials");
+  }
+  else {
+    hide(highScoreLink);
+    hide(rate);
+    hide(gameOver);
+    show(highScorePage);
+    const newPlayer = {
+      user: initials,
+      score,
+    };
+
+    //Gets scores array from local storage
+    const allScores = JSON.parse(localStorage.getItem("scores")) || [];
+    //Pushes newPlayer's onjects in an array
+    allScores.push(newPlayer);
+    //Saves pushed initials and scores into local storage
+    localStorage.setItem("scores", JSON.stringify(allScores));
+    renderHighScores();
+  }
+});
+
+//Function to go back to main page when 'Main Page' button is clicked
+goToMainBtn.addEventListener("click", function () {
+  reset();
+  show(introSect);
+  show(highScoreLink);
+  hide(highScorePage);
+  //Clears previous entered initial from initial's text box
+  initials.value = "";
+});
