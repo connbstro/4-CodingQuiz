@@ -15,7 +15,7 @@ const clearBtn = document.querySelector("#clear");
 // Questions array
 const questions = [
   {
-    title: "What's the correct term?",
+    prompt: "What's the correct term?",
     optionA: "Java",
     optionB: "JavaScript",
     optionC: "JavaJuice",
@@ -23,7 +23,7 @@ const questions = [
     answer: "B",
   },
   {
-    title: "Commonly used data types don't include... ?",
+    prompt: "Commonly used data types don't include... ?",
     optionA: "Booleans",
     optionB: "Strings",
     optionC: "Numbers",
@@ -31,7 +31,7 @@ const questions = [
     answer: "D",
   },
   {
-    title: "Inside which HTML element do we put the JavaScript?",
+    prompt: "Inside which HTML element do we put the JavaScript?",
     optionA: "Script",
     optionB: "Header",
     optionC: "Span",
@@ -39,7 +39,7 @@ const questions = [
     answer: "A",
   },
   {
-    title: "JavaScript is a __________ language.",
+    prompt: "JavaScript is a __________ language.",
     optionA: "Spanish",
     optionB: "Styling",
     optionC: "Scripting",
@@ -47,7 +47,7 @@ const questions = [
     answer: "C",
   },
   {
-    title: "What symbol is used to compare if two values are stricly equal?",
+    prompt: "What symbol is used to compare if two values are stricly equal?",
     optionA: "==",
     optionB: "=",
     optionC: "===",
@@ -98,4 +98,47 @@ function countdown() {
 function stopTimer() {
   clearInterval(interval);
   hide(timer);
+}
+
+// Get questions from the array
+function getQuestions() {
+  const questionPrompt = document.querySelector("#question");
+  const optionA = document.querySelector("#A");
+  const optionB = document.querySelector("#B");
+  const optionC = document.querySelector("#C");
+  const optionD = document.querySelector("#D");
+
+  questionPrompt.textContent = questions[currentQuestion].prompt;
+  optionA.textContent = questions[currentQuestion].optionA;
+  optionB.textContent = questions[currentQuestion].optionB;
+  optionC.textContent = questions[currentQuestion].optionC;
+  optionD.textContent = questions[currentQuestion].optionD;
+}
+
+// Show if answer is correct or incorrect
+function validateAnswer(x) {
+  show(rate);
+  if (x == questions[currentQuestion].answer) {
+    score++;
+    rate.textContent = "Correct!";
+  } else {
+    secondsLeft = secondsLeft - 10;
+    rate.textContent = "Incorrect";
+  }
+  if (currentQuestion < lastQuestion) {
+    currentQuestion ++;
+    getQuestions()
+  } else {
+    stopTimer();
+    finishQuiz();
+  }
+}
+
+// Function to stop quiz and save user's initials and score
+function finishQuiz() {
+  hide(timer);
+  hide(questionSelect);
+  show(gameOver);
+  const showScore = document.querySelector("#score");
+  showScore.textContent = "Your final score is " + score + ".";
 }
