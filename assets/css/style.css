@@ -3,18 +3,19 @@
     --main-color: blueviolet;
     --hover-color: rgb(224, 11, 189);
 }
+
 /* Style for entire HTML page */
 * {
     box-sizing: border-box;
     font-size: 20px;
 }
 
-#intro, #highScoreLink {
+#intro,
+#highScoreLink {
     display: block;
 }
 
 .sect {
-    /* Sets elements to not show on page by default */
     display: none;
     margin: auto;
     max-width: 600px;
@@ -25,14 +26,16 @@ h1 {
     font-size: 30px;
 }
 
+#intro {
+    text-align: center;
+}
+
 #highScoreLink {
     text-decoration: underline;
 }
 
 #highScoreLink:hover {
     cursor: grab;
-    /* font-style: italic; */
-    /* font-size: 25px; */
 }
 
 #rate {
@@ -70,4 +73,8 @@ button:hover {
     background-color: white;
     border: solid black 2px;
     cursor: grab;
+}
+
+.final {
+    font-size: 30px;
 }
