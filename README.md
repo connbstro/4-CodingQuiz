@@ -18,10 +18,9 @@ THEN the game is over
 WHEN the game is over
 THEN I can save my initials and score
 
-## **Video Example**
+## **Deployed Link**
 
-N/A
-
+https://connbstro.github.io/4-CodingQuiz/
   <br/>
 
 ## **Table of Contents**
