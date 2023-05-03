@@ -18,10 +18,17 @@ THEN the game is over
 WHEN the game is over
 THEN I can save my initials and score
 
-## **Deployed Link**
+## **Wepage:**
 
-https://connbstro.github.io/4-CodingQuiz/
-  <br/>
+(https://connbstro.github.io/4-CodingQuiz/)
+
+<img width="1498" alt="Screenshot 2023-05-03 at 11 51 41 AM" src="https://user-images.githubusercontent.com/117555071/235986082-9a011aee-91a7-453c-b474-ba8a435c1311.png">
+
+<img width="947" alt="Screenshot 2023-05-03 at 11 52 02 AM" src="https://user-images.githubusercontent.com/117555071/235985972-617b77fb-b841-44b1-8f61-1d4ec80dc900.png">
+
+<img width="924" alt="Screenshot 2023-05-03 at 11 52 44 AM" src="https://user-images.githubusercontent.com/117555071/235985766-d6deb0d8-1fe3-4af5-8a94-05d188c5d2d9.png">
+
+<br/>
 
 ## **Table of Contents**
 
@@ -33,12 +40,6 @@ https://connbstro.github.io/4-CodingQuiz/
 ### [Description](#Description)
 
 ### [Installation](#Installation)
-
-### [Usage](#Usage)
-
-### [Contributors](#Contributors)
-
-### [Tests](#Tests)
 
 ### [Questions](#Questions)
 
@@ -60,22 +61,6 @@ https://connbstro.github.io/4-CodingQuiz/
 ## **Installation**
 
 Click start to begin the quiz
-
-  <br/>
-  
-  ## **Usage**
-  N/A
-  
-  <br/>
-  
-  ## **Contributors**
-N/A
-
-  <br/>
-
-## **Tests**
-
-N/A
 
   <br/>
 
